@@ -1,11 +1,17 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const cors = require('cors')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const app = express()
+
+app.use(cors())
+
+const port = 5000
+
+app.post('/register', (req, res) => {
+  const {username, password} = req.body
+  console.log(username, password)
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
